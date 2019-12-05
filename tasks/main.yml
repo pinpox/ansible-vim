@@ -3,7 +3,7 @@
 - name: Deploy vim dotfiles repo
   git:
     repo: git@github.com:binaryplease/dotfiles-vim.git
-    dest: /home/{{user}}/binaryplease
+    dest: /home/{{user}}/binaryplease/.vim
 
 - name: Set vim colorscheme
   template:
@@ -15,3 +15,14 @@
     src: "/home/{{user}}/.config/nvim"
     dest: "/home/{{user}}/.vim"
     state: link
+
+- name: Make sure .local/share/applications exists
+  file:
+    path: /home/{{user}}/.local/share/applications
+    state: directory
+
+- name: Copy nvim.desktop
+  copy:
+    src: nvim.desktop
+    dest: "/home/{{user}}/.local/share/applications/nvim.desktop
+
