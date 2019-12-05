@@ -4,3 +4,8 @@
   git:
     repo: git@github.com:binaryplease/dotfiles-vim.git
     dest: /home/{{user}}/binaryplease
+
+- name: Set vim colorscheme
+  template:
+    src: vimrc_background.j2
+    dest: /home/{{user}}/.vimrc_background
