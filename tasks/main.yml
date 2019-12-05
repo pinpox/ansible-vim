@@ -9,3 +9,9 @@
   template:
     src: vimrc_background.j2
     dest: /home/{{user}}/.vimrc_background
+
+- name: Create symbolic link for neovim
+  file:
+    src: "/home/{{user}}/.config/nvim"
+    dest: "/home/{{user}}/.vim"
+    state: link
