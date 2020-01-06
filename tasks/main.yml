@@ -12,6 +12,6 @@
 
 - name: Create symbolic link for neovim
   file:
-    src: "/home/{{user}}/.config/nvim"
-    dest: "/home/{{user}}/.vim"
+    src: "/home/{{user}}/.vim"
+    dest: "/home/{{user}}/.config/nvim"
     state: link
