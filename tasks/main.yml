@@ -6,11 +6,6 @@
     repo: https://github.com/binaryplease/dotfiles-vim.git
     dest: "{{ansible_env.HOME}}/.vim"
 
-- name: Set vim colorscheme
-  template:
-    src: vimrc_background.j2
-    dest: "{{ansible_env.HOME}}/.vimrc_background"
-
 - name: Create symbolic link for neovim
   file:
     src: "{{ansible_env.HOME}}/.vim"
@@ -26,3 +21,13 @@
   copy:
     src: nvim.desktop
     dest: "{{ansible_env.HOME}}/.local/share/applications/nvim.desktop"
+
+- name: "Make sure {{ansible_env.HOME}}/.vim/colors exists"
+  file:
+    path: "{{ansible_env.HOME}}/.vim/colors"
+    state: directory
+
+- name: "Template theme to .vim/colors/ansible-theme.vim"
+  template:
+    src: "theme.j2"
+    dest: "{{ansible_env.HOME}}/.vim/colors/ansible-theme.vim"
